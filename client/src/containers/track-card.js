@@ -47,13 +47,16 @@ const TrackCard = ({ track }) => {
         <CardBody>
           <CardTitle>{title || ''}</CardTitle>
           <CardFooter>
-            <AuthorImage src={author.photo} />
-            <AuthorAndTrack>
-              <AuthorName>{author.name}</AuthorName>
-              <TrackLength>
-                {modulesCount} modules - {humanReadableTimeFromSeconds(length)}
-              </TrackLength>
-            </AuthorAndTrack>
+            {author &&
+            <>
+              <AuthorImage src={author.photo} />
+              <AuthorAndTrack>
+                <AuthorName>{author.name}</AuthorName>
+                <TrackLength>
+                  {modulesCount} modules - {humanReadableTimeFromSeconds(length)}
+                </TrackLength>
+              </AuthorAndTrack>
+            </>}
           </CardFooter>
         </CardBody>
       </CardContent>

@@ -47,11 +47,13 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^2.3.0",
     "@graphql-codegen/typescript": "^2.4.0",
+    "@graphql-codegen/typescript-operations": "^2.2.0",
+    "@graphql-codegen/typescript-react-apollo": "^3.2.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2"
   },
-  "main": "src/index.js",
+  "main": "src/index.tsx",
   "author": "Raphael Terrier @R4ph-t",
   "license": "MIT"
 }

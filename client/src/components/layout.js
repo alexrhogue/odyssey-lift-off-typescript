@@ -7,7 +7,7 @@ import { widths, unit } from '../styles';
  * Layout renders the full page content:
  * with header, Page container and footer
  */
-const Layout = ({ fullWidth, children, grid }) => {
+const Layout = ({ fullWidth = false, children, grid = false }) => {
   return (
     <>
       <Header />

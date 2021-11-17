@@ -1,0 +1,49 @@
+query getTracks {
+  tracksForHome {
+      id
+      title
+      thumbnail
+      length
+      modulesCount
+    }
+}
+
+query getTrack($trackId: ID!) {
+    track(id: $trackId) {
+        id
+        title
+        author {
+        id
+        name
+        photo
+        }
+        thumbnail
+        length
+        modulesCount
+        numberOfViews
+        modules {
+        id
+        title
+        length
+        }
+        description
+    }
+}
+
+ query getModuleAndParentTrack($moduleId: ID!, $trackId: ID!) {
+    module(id: $moduleId) {
+      id
+      title
+      content
+      videoUrl
+    }
+    track(id: $trackId) {
+      id
+      title
+      modules {
+        id
+        title
+        length
+      }
+    }
+  }
