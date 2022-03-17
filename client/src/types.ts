@@ -114,7 +114,7 @@ export type GetTrackQueryVariables = Exact<{
 }>;
 
 
-export type GetTrackQuery = { __typename?: 'Query', track: { __typename?: 'Track', id: string, title: string, thumbnail?: string | null | undefined, length?: number | null | undefined, modulesCount?: number | null | undefined, numberOfViews?: number | null | undefined, description?: string | null | undefined, author: { __typename?: 'Author', id: string, name: string, photo?: string | null | undefined }, modules: Array<{ __typename?: 'Module', id: string, title: string, length?: number | null | undefined }> } };
+export type GetTrackQuery = { __typename?: 'Query', track: { __typename?: 'Track', id: string, title: string } };
 
 export type GetModuleAndParentTrackQueryVariables = Exact<{
   moduleId: Scalars['ID'];
@@ -168,21 +168,6 @@ export const GetTrackDocument = gql`
   track(id: $trackId) {
     id
     title
-    author {
-      id
-      name
-      photo
-    }
-    thumbnail
-    length
-    modulesCount
-    numberOfViews
-    modules {
-      id
-      title
-      length
-    }
-    description
   }
 }
     `;

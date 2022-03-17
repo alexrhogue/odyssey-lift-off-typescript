@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Layout, QueryResult } from '../components';
 import TrackDetail from '../components/track-detail';
-import { useGetTrackQuery } from '../types';
+import { useGetTrackLazyQuery, useGetTrackQuery } from '../types';
 
 
 /**
@@ -9,16 +9,22 @@ import { useGetTrackQuery } from '../types';
  * and provides it to the TrackDetail component to display
  */
 const Track = ({ trackId }: { trackId: string }) => {
-  const { loading, error, data } = useGetTrackQuery({ variables: { trackId } });
-
+  const [call,{  called,loading, error, data }] = useGetTrackLazyQuery({fetchPolicy:'network-only'});
+const [id,setId] =useState('c_3')
   
-  return (
-    <Layout>
-      <QueryResult error={error} loading={loading} data={data}>
-        <TrackDetail track={data?.track} />
-      </QueryResult>
-    </Layout>
-  );
+    console.log(loading);
+    return (
+      <div>
+        <input value={id} onChange={e => setId(e.currentTarget.value)}/>
+        <button onClick={() => call({ variables: { trackId:id }})}>
+          call
+        </button>
+        <div>loading: {loading ? "true" : "false"}</div>
+        <div>called: {called ? "true" : "false"}</div>
+        <div>error: {JSON.stringify(error)}</div>
+        <pre>{JSON.stringify(data)}</pre>
+      </div>
+    );
 };
 
 export default Track;
